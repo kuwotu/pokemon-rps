@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper scissors</title>
+  </head>
+  <body>
+    <script>
+      // A function called ComputerPlay will contain the choices Rock, Paper and Scissors.
+      // ComputerPlay when called returns either Rock, Paper or Scissors at random.
+
+      computerPlay = () => {
+        let choice = ["rock", "paper", "scissors"];
+        let min = 0;
+        let max = choice.length - 1;
+        let randomChoice = Math.floor(Math.random() * (max - min + 1) + min);
+        return choice[randomChoice];
+      };
+
+      playerPlay = () => {
+        let userChoice = prompt(
+          "What is your choice? Rock, Paper or Scissors?",
+          ""
+        );
+        return userChoice.toLowerCase();
+      };
+
+      let computerScore = 0;
+      let playerScore = 0;
+
+      // Got rid of the parameters and moved the computerSelection and playerSelection inside the playRound function.
+      // so that the function can be called again instead of re using the first result of the prompt.
+      // Also added the scores inside the playRound function.
+      // By assigning the playerPlay(); to playerSelection, I can take the result of the prompt and
+      // add a .toLowerCase function to playerSelection so that the if statement works.
+      // This solves the case insensitive problem.
+
+      playRound = () => {
+        const computerSelection = computerPlay();
+        const playerSelection = playerPlay();
+
+        if (playerSelection == "rock" && computerSelection == "paper") {
+          ++computerScore;
+          console.log("You lose - paper beats rock.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (
+          playerSelection == "rock" &&
+          computerSelection == "scissors"
+        ) {
+          ++playerScore;
+          console.log("You win - rock beats scissors.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (playerSelection == "rock" && computerSelection == "rock") {
+          console.log("Draw - You both chose rock.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+          ++playerScore;
+          console.log("You win - paper beats rock.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (
+          playerSelection == "paper" &&
+          computerSelection == "scissors"
+        ) {
+          ++computerScore;
+          console.log("You lose - scissors beats paper.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (playerSelection == "paper" && computerSelection == "paper") {
+          console.log("Draw - You both chose paper.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (
+          playerSelection == "scissors" &&
+          computerSelection == "rock"
+        ) {
+          ++computerScore;
+          console.log("You lose - rock beats scissors.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (
+          playerSelection == "scissors" &&
+          computerSelection == "paper"
+        ) {
+          ++playerScore;
+          console.log("You win - scissors beats rock.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (
+          playerSelection == "scissors" &&
+          computerSelection == "scissors"
+        ) {
+          console.log("Draw - You both chose scissors.");
+          console.log(`Your score: ${playerScore}`);
+          console.log(`Computer score: ${computerScore}`);
+        } else if (!playerSelection == "rock" || "paper" || "scissors") {
+          alert(
+            "Your input is not a choice - please type either rock, paper or scissors."
+          );
+          playRound();
+        }
+      };
+
+      game = () => {
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        playRound();
+        if (computerScore < playerScore) {
+          console.log(`You win!!! ${playerScore} - ${computerScore}`);
+        } else if (computerScore > playerScore) {
+          console.log(`You lose :( ${computerScore} - ${playerScore}`);
+        } else if (computerScore === playerScore) {
+          console.log(`Wow, it's a draw. ${playerScore} - ${computerScore}`);
+        }
+      };
+
+      console.log(game());
+    </script>
+  </body>
+</html>

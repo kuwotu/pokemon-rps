@@ -1,0 +1,175 @@
+@font-face {
+  src: url(fonts/Pokemon_GB.ttf);
+  font-family: pokemonGB;
+}
+
+/** Logo */
+
+#logo {
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+#img-logo {
+  width: 15%;
+}
+
+/** Instructions */
+
+#instructions {
+  padding-top: 30px;
+  text-align: center;
+  font-family: pokemonGB;
+  font-size: 7px;
+}
+
+/** Pokemon Text Color */
+
+.b-text {
+  color: #6fae52;
+}
+.c-text {
+  color: #f48b40;
+}
+.s-text {
+  color: #93c8d0;
+}
+
+.divider {
+  font-family: pokemonGB;
+  font-size: 10px;
+}
+
+.game-rules {
+  padding-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  margin: 0% 20%;
+  font-family: pokemonGB;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.img-pokemon {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  padding: 0% 20% 3% 20%;
+}
+
+#img-bulbasaur {
+  width: 10%;
+  height: 15%;
+  outline: none;
+  transition: all 0.2s;
+}
+
+#img-charmander {
+  width: 12%;
+  height: 10%;
+  outline: none;
+  margin-top: -10px;
+  transition: all 0.2s;
+}
+
+#img-squirtle {
+  height: 10%;
+  width: 10%;
+  outline: none;
+  transition: all 0.2s;
+}
+
+#img-bulbasaur:hover {
+  width: 15%;
+  height: 30%;
+}
+
+#img-charmander:hover {
+  width: 20%;
+  height: 20%;
+  margin-top: -10px;
+}
+
+#img-squirtle:hover {
+  height: 10%;
+  width: 15%;
+}
+
+/** Rounds information */
+
+.display-rounds {
+  display: flex;
+  justify-content: center;
+  font-family: pokemonGB;
+  font-size: 10px;
+  padding-bottom: 20px;
+}
+
+#info-round {
+  border: 2px solid black;
+  width: 400px;
+  height: 200px;
+}
+
+.round-header {
+  text-align: center;
+  padding: 15px 0px;
+}
+
+.round-p {
+  line-height: 30px;
+  padding: 0px 15px;
+}
+
+#img-computer-selection {
+  display: flex;
+  justify-content: space-around;
+}
+
+#info-computer {
+  border: 2px solid black;
+  width: 400px;
+  height: 200px;
+  font-family: pokemonGB;
+  font-size: 10px;
+}
+
+#img-computer {
+  width: 30%;
+}
+
+/** Class for pokemon pictures in comp choice*/
+
+.bulba-comp {
+  width: 30%;
+  outline: none;
+}
+
+.char-comp {
+  width: 30%;
+  outline: none;
+}
+
+.squir-comp {
+  width: 30%;
+  outline: none;
+}
+
+/**Life - score keeper*/
+
+.life {
+  display: flex;
+  justify-content: space-around;
+  margin: 0% 20%;
+}
+
+#player-hp {
+  text-align: center;
+  font-family: PokemonGB;
+}
+
+#computer-hp {
+  text-align: center;
+  font-family: PokemonGB;
+}

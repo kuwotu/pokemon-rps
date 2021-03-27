@@ -16,20 +16,23 @@ const inputC = document.querySelector("#img-charmander");
 
 const inputS = document.querySelector("#img-squirtle");
 
-inputB.addEventListener("click", function () {
-  let player = "Bulbasaur";
-  playRound(player);
-});
+function playRoundAsBulbasaur() {
+  playRound("Bulbasaur");
+}
 
-inputC.addEventListener("click", function () {
-  let player = "Charmander";
-  playRound(player);
-});
+function playRoundAsCharmander() {
+  playRound("Charmander");
+}
 
-inputS.addEventListener("click", function () {
-  let player = "Squirtle";
-  playRound(player);
-});
+function playRoundAsSquirtle() {
+  playRound("Squirtle");
+}
+
+inputB.addEventListener("click", playRoundAsBulbasaur);
+
+inputC.addEventListener("click", playRoundAsCharmander);
+
+inputS.addEventListener("click", playRoundAsSquirtle);
 
 // Round increment
 
@@ -42,6 +45,10 @@ changeRound = () => {
   round.textContent = `Round ${r}`;
 };
 
+// Draw counter
+
+let drawCounter = 0;
+
 // Health
 
 let computerHealth = 100;
@@ -53,6 +60,8 @@ const computerHealthScore = document.querySelector("#computer-health");
 
 // Round text
 const roundText1 = document.querySelector("#round-text1");
+
+// computer selection images
 
 computerSelectionImgB = () => {
   let bulbaClass = document.querySelector("#img-computer-choice");
@@ -76,14 +85,42 @@ computerSelectionImgS = () => {
 
 const roundsBorder = document.querySelectorAll(".rounds-border");
 
-playRound = (player) => {
+// pokeball
+
+pokeball = () => {
+  const imgPokeball = document.querySelector("#img-pokeball");
+  imgPokeball.classList.add("pokeball-refresh");
+  document.getElementById("img-pokeball").style.visibility = "visible";
+  document.getElementById("img-pokeball").src = "/images/Poké_Ball.svg.png";
+
+  const refreshText = document.createElement("p");
+  refreshText.classList.add("refresh-text");
+  refreshText.textContent = "Click the pokeball to play again.";
+
+  const refreshDiv = document.getElementById("refresh");
+
+  refreshDiv.insertBefore(refreshText, imgPokeball);
+};
+
+function refreshGame() {
+  window.location.reload();
+}
+
+const inputPokeball = document.querySelector("#img-pokeball");
+inputPokeball.addEventListener("click", refreshGame);
+
+// PlayRound
+
+playRound = (playerPokemon) => {
   changeRound();
 
   const computerSelection = computerPlay();
-  let playerSelection = player;
+  let playerSelection = playerPokemon;
 
   if (playerSelection == "Bulbasaur" && computerSelection == "Charmander") {
     playerHealth -= 20;
+    drawCounter = 0;
+    console.log(drawCounter);
 
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: #EE5949";
@@ -99,6 +136,9 @@ playRound = (player) => {
   ) {
     computerHealth -= 20;
 
+    drawCounter = 0;
+    console.log(drawCounter);
+
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: #AEE2B3";
     });
@@ -110,6 +150,9 @@ playRound = (player) => {
     playerSelection == "Bulbasaur" &&
     computerSelection == "Bulbasaur"
   ) {
+    ++drawCounter;
+    console.log(drawCounter);
+
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: black";
     });
@@ -120,6 +163,9 @@ playRound = (player) => {
     computerSelection == "Bulbasaur"
   ) {
     computerHealth -= 20;
+
+    drawCounter = 0;
+    console.log(drawCounter);
 
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: #AEE2B3";
@@ -133,6 +179,10 @@ playRound = (player) => {
     computerSelection == "Squirtle"
   ) {
     playerHealth -= 20;
+
+    drawCounter = 0;
+    console.log(drawCounter);
+
     roundText1.textContent = `You took damage! - Charmander’s Ember stood no chance against Squirtle's whirling Water Gun!`;
 
     roundsBorder.forEach((roundsBorder) => {
@@ -145,6 +195,9 @@ playRound = (player) => {
     playerSelection == "Charmander" &&
     computerSelection == "Charmander"
   ) {
+    ++drawCounter;
+    console.log(drawCounter);
+
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: black";
     });
@@ -155,6 +208,10 @@ playRound = (player) => {
     computerSelection == "Bulbasaur"
   ) {
     playerHealth -= 20;
+
+    drawCounter = 0;
+    console.log(drawCounter);
+
     roundText1.textContent = `You took damage! - Squirtle’s Water Gun stood no chance against Bulbasaur’s stinging Vine Whip!`;
 
     roundsBorder.forEach((roundsBorder) => {
@@ -169,6 +226,9 @@ playRound = (player) => {
   ) {
     computerHealth -= 20;
 
+    drawCounter = 0;
+    console.log(drawCounter);
+
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: #AEE2B3";
     });
@@ -177,10 +237,38 @@ playRound = (player) => {
     computerSelectionImgC();
     computerHealthScore.textContent = `${computerHealth}/100`;
   } else if (playerSelection == "Squirtle" && computerSelection == "Squirtle") {
+    ++drawCounter;
+    console.log(drawCounter);
     roundsBorder.forEach((roundsBorder) => {
       roundsBorder.style.cssText = "border-color: black";
     });
     roundText1.textContent = `Draw - You both chose Squirtle. The Water Guns cancelled each other out.`;
     computerSelectionImgS();
+  }
+  /**
+Will add Draw Function later 
+
+  if (drawCounter == 3) {
+    computerHealth -= 20;
+    roundsBorder.forEach((roundsBorder) => {
+      roundsBorder.style.cssText = "border-color: gold";
+    });
+    roundText1.textContent = `Three draws in a row? Must be a glitch… Secret choice unlocked! You used a wild Missingno to defeat Computers ${computerSelection}.`;
+  }
+
+  */
+
+  if (playerHealth == 0) {
+    roundText1.textContent = `Defeat! You were beaten by trainer Computer. You've got a lot of training to do!`;
+    inputB.removeEventListener("click", playRoundAsBulbasaur);
+    inputC.removeEventListener("click", playRoundAsCharmander);
+    inputS.removeEventListener("click", playRoundAsSquirtle);
+    pokeball();
+  } else if (computerHealth == 0) {
+    roundText1.textContent = `Victory! You defeated trainer Computer. You'll make a great Pokemon Master!`;
+    inputB.removeEventListener("click", playRoundAsBulbasaur);
+    inputC.removeEventListener("click", playRoundAsCharmander);
+    inputS.removeEventListener("click", playRoundAsSquirtle);
+    pokeball();
   }
 };

@@ -92,7 +92,7 @@ pokeball = () => {
   const imgPokeball = document.querySelector("#img-pokeball");
   imgPokeball.classList.add("pokeball-refresh");
   document.getElementById("img-pokeball").style.visibility = "visible";
-  document.getElementById("img-pokeball").src = "./images/Poké_Ball.png";
+  document.getElementById("img-pokeball").src = "./images/Poké_Ball.jpg";
 
   const refreshText = document.createElement("p");
   refreshText.classList.add("refresh-text");

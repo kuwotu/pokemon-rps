@@ -66,19 +66,20 @@ const roundText1 = document.querySelector("#round-text1");
 computerSelectionImgB = () => {
   let bulbaClass = document.querySelector("#img-computer-choice");
   bulbaClass.classList.add("bulba-comp");
-  document.getElementById("img-computer-choice").src = "/images/Bulbasaur.png";
+  document.getElementById("img-computer-choice").src = "./images/Bulbasaur.png";
 };
 
 computerSelectionImgC = () => {
   let bulbaClass = document.querySelector("#img-computer-choice");
   bulbaClass.classList.add("char-comp");
-  document.getElementById("img-computer-choice").src = "/images/charmander.png";
+  document.getElementById("img-computer-choice").src =
+    "./images/charmander.png";
 };
 
 computerSelectionImgS = () => {
   let bulbaClass = document.querySelector("#img-computer-choice");
   bulbaClass.classList.add("squir-comp");
-  document.getElementById("img-computer-choice").src = "/images/Squirtle.png";
+  document.getElementById("img-computer-choice").src = "./images/Squirtle.png";
 };
 
 // Rounds info border color change
@@ -91,7 +92,7 @@ pokeball = () => {
   const imgPokeball = document.querySelector("#img-pokeball");
   imgPokeball.classList.add("pokeball-refresh");
   document.getElementById("img-pokeball").style.visibility = "visible";
-  document.getElementById("img-pokeball").src = "/images/Poké_Ball.svg.png";
+  document.getElementById("img-pokeball").src = "./images/Poké_Ball.svg.png";
 
   const refreshText = document.createElement("p");
   refreshText.classList.add("refresh-text");

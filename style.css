@@ -72,6 +72,7 @@
 
 #img-bulbasaur {
   width: 100px;
+  height: 100px;
 
   outline: none;
   transition: all 0.2s;
@@ -79,6 +80,7 @@
 
 #img-charmander {
   width: 120px;
+  height: 120px;
 
   outline: none;
   margin-top: -10px;
@@ -87,6 +89,7 @@
 
 #img-squirtle {
   width: 100px;
+  height: 100px;
 
   outline: none;
   transition: all 0.2s;
@@ -94,16 +97,19 @@
 
 #img-bulbasaur:hover {
   width: 150px;
+  height: 150px;
 }
 
 #img-charmander:hover {
   width: 170px;
+  height: 170px;
 
   margin-top: -10px;
 }
 
 #img-squirtle:hover {
   width: 150px;
+  height: 150px;
 }
 
 /** Rounds information */
@@ -149,7 +155,7 @@
 
 #img-computer {
   width: 100px;
-  height: 110px;
+  height: 100px;
 }
 
 /** Class for pokemon pictures in comp choice*/
@@ -206,7 +212,7 @@
 .refresh-text {
   font-family: pokemonGB;
   font-size: 8px;
-  padding-bottom: 10px;
+  padding: 10px 0px;
 }
 
 #img-pokeball {
@@ -268,6 +274,13 @@
     height: 200px;
   }
 
+  #instructions {
+    line-height: 20px;
+  }
+  .img-pokemon {
+    padding: 0% 0% 3% 0%;
+  }
+
   .display-rounds {
     display: flex;
     flex-direction: column;
@@ -279,7 +292,7 @@
 
   #info-computer {
     border: 2px solid black;
-    width: 400px;
+    width: 350px;
     height: 170px;
     font-size: 10px;
     border-top: 1px solid black;
@@ -287,7 +300,7 @@
 
   #info-round {
     border: 2px solid black;
-    width: 400px;
+    width: 350px;
     height: 170px;
     border-bottom: 1px solid black;
   }
@@ -370,10 +383,6 @@
 
   #computer-hp {
     font-size: 10px;
-  }
-
-  .pokeball-refresh {
-    width: 35px;
   }
 }
 
